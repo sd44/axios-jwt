@@ -5,7 +5,7 @@ import { StorageProxy } from './StorageProxy'
 import { IAuthTokenInterceptorConfig } from './IAuthTokenInterceptorConfig'
 import { TokenRefreshRequest } from './TokenRefreshRequest'
 import { Token } from './Token'
-import jwtDecode, { JwtPayload } from 'jwt-decode'
+import { jwtDecode, JwtPayload } from 'jwt-decode'
 import { STORAGE_KEY } from './StorageKey'
 import { getBrowserLocalStorage } from './getBrowserLocalStorage'
 import { applyStorage } from './applyStorage'
@@ -24,7 +24,7 @@ let currentlyRequestingPromise: Promise<Token | undefined> | undefined = undefin
  * @returns Unix timestamp
  */
 const getTimestampFromToken = (token: Token): number | undefined => {
-  const decoded = jwtDecode<JwtPayload>(token)
+    const decoded = jwtDecode<JwtPayload>(token)
 
   return decoded.exp
 }
